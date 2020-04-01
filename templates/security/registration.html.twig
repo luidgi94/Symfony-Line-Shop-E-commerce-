@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Formulaire d'inscription {% endblock %}
+
+{% block body %}
+    {{ form_start(form_register) }} 
+    <div id="login" class="register mb-5">
+
+        <div class="container">
+
+            <div id="login-row">
+
+                <div id="login-column">
+
+                    <div id="login-box" class="col-md-6">
+
+                        <h3 class="text-center text-dark mt-2">Inscription</h3>  
+                       
+                        <div class="form-group">
+                            {{ form_row(form_register.email, {'label': 'Adresse mail' ,'attr' : {'placeholder' : 'Adresse mail'}}) }}
+                        </div><br>
+
+                        <div class="form-group">
+                            {{ form_row(form_register.pseudo, {'label': 'Pseudo' ,'attr' : {'placeholder' : 'Pseudo'}}) }}
+                        </div><br>
+
+                        <div class="form-group">
+                            {{ form_row(form_register.password, {'label': 'Mot de passe' ,'attr' : {'placeholder' : 'Mot de passe'}}) }}
+                        </div><br>
+
+                        <div class="form-group">
+                            {{ form_row(form_register.confirm_password, {'label': 'Confirmez mot de passe' ,'attr' : {'placeholder' : 'Répétez le mot de passe'}}) }}
+                        </div><br>
+
+                        <div class="form-group">
+                            {{ form_row(form_register.username, {'label': 'Nom' ,'attr' : {'placeholder' : 'Nom'}}) }}
+                        </div><br>
+
+                        <div class="form-group">
+                            {{ form_row(form_register.firstname, {'label': 'Prénom' ,'attr' : {'placeholder' : 'Prénom'}}) }}
+                        </div><br>
+
+                        <div class="form-group">
+                            {{ form_row(form_register.address, {'label': 'Adresse' ,'attr' : {'placeholder' : 'Adresse'}}) }}
+                        </div><br>
+
+                        <div class="form-group">
+                            {{ form_row(form_register.city, {'label': 'Ville' ,'attr' : {'placeholder' : 'ville'}}) }}
+                        </div><br>
+
+                        <div class="form-group">
+                            {{ form_row(form_register.postal_code, {'label': 'Code Postal' ,'attr' : {'placeholder' : 'Code Postal'}}) }}
+                        </div><br>
+
+                        <div class="form-group">
+                            <label for="remember-me" class="text-dark"><span>Se rappeler de moi</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                            <input type="submit" name="submit" class="btn btn-dark btn-md" value="Se connecter">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{{ form_end(form_register) }}
+{% endblock %}

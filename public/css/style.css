@@ -1,0 +1,95 @@
+.plus
+{
+    background-position: 0 0;
+    width: 43px;
+    height: 44px;
+    display: block;
+    position: absolute;
+    bottom: 25px;
+    right: -13px;
+}
+
+.fa-gift
+{
+    color: chocolate;
+}
+
+.fa-trash
+{
+    color: red !important;
+}
+
+.navbar 
+{
+    padding: unset;
+}
+
+.fa-shopping-cart, .total, .item
+{
+    color: greenyellow !important;
+}
+
+.fa-shopping-cart:hover
+{
+    color: rgb(191, 255, 16) !important;
+}
+
+.totalshipping
+{
+    margin: 10px;
+}
+
+.shippingcart
+{
+    margin-top: 80px;
+    font-size: large;
+}
+
+.login
+{
+    margin-top: 0px;
+}
+
+.register
+{
+    margin-top: 0px;
+}
+
+.shiptable
+{
+    list-style-type: none;
+}
+
+.produit
+{
+    padding-right: 200px !important;
+}
+
+.action
+{
+    padding-right: 20px;
+}
+
+.prix,.tva,.qte
+{
+    padding-right: 85px;
+}
+
+#login .container #login-row #login-column #login-box 
+{
+    margin-top: 120px;
+    max-width: 1200px !important;
+    height: 1200px !important;
+    border: 1px solid #9C9C9C;
+    background-color: #EAEAEA;
+}
+
+#login .container #login-row #login-column #login-box #login-form 
+{
+    padding: 20px;
+}
+
+#login .container #login-row #login-column #login-box #login-form #register-link 
+{
+    margin-top: -85px;
+}

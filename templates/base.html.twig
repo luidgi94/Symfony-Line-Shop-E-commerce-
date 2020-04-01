@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <script src="https://kit.fontawesome.com/5cf80f76be.js" crossorigin="anonymous"></script>
+    {% endblock %}
+    
+    <title>{% block title %}Bienvenue sur Line Shop!{% endblock %}</title>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+      <div class="container">
+
+        <a class="navbar-brand" href="/"><img src="{{ asset('images/Logo_LINESHOP.png')}}" alt="LINESHOP LOGO"></a>
+        
+        <h5 class="text-light"><i>The best online store, for real.</i></h5>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item border border-top-0 border-bottom-0 border-light">
+              <a class="nav-link" href="{{ path('cart_index') }}"><i class="fa fa-3x fa-shopping-cart"></i></a>
+            </li>
+
+            <li class="nav-item border border-top-0 border-bottom-0 border-left-0">
+              <span class="col-5 border-bottom text-center text-light item"><b>ITEMS</b></span><br>
+              <p class="text-center text-light"><b>0</b></p>
+            </li>
+
+            <li class="nav-item border border-top-0 border-bottom-0 border-left-0">
+              <span class="col-5 border-bottom text-center text-light total"><b>TOTAL</b></span><br>
+              <p class="text-center text-light"><b>0 €</b></p>
+            </li>
+            </tr>
+          </ul>
+
+          {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+          <ul class="navbar-nav ml-auto form-inline text-light">
+            {{ form_row(form.search, {'label': 'Recherche' ,'attr' : {'placeholder' : 'Recherche'}}) }}
+            {{ form_row(form.send) }}
+          </ul>  
+          {{ form_end(form) }}
+        </div>
+        
+      </div>
+
+    </nav>
+ 
+  {% block body %}
+
+  {% endblock %}   
+
+    <!-- Footer -->
+    <footer class="py-3 bg-dark mt-5 fixed-bottom">
+
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; LineShoP 2019</p>
+      </div>
+
+    </footer>
+    
+    {% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    {% endblock %}
+    
+  </body>
+
+</html>

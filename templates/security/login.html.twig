@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Session de connexion{% endblock %}
+
+{% block body %}
+    
+    
+ <!-- Page Content -->
+    
+    <!-- SESSION TEST DE CONNEXION -->
+    <div id="login" class="login">
+       
+        <div class="container">
+
+            <div id="login-row" class="row justify-content-center align-items-center">
+
+                <div id="login-column" class="col-md-6">
+
+                    <div id="login-box" class="col-md-12">
+
+                        <form id="login-form" class="form" action="{{ path('security_login') }}" method="post">
+
+                            <h3 class="text-center text-dark">Login</h3> 
+                            {% if message is defined %}
+                                <span class="text-center badge badge-success">{{ message }}</span>
+                            {% endif %}
+                            
+                            <div class="form-group">
+                                <label for="mail" class="text-dark">E-mail:</label><br>
+                                <input type="text" required name="_username" placeholder="Entrez votre email" id="mail" class="form-control" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="text-dark">Mot de passe:</label><br>
+                                <input type="password" required name="_password" placeholder="Entrez votre mot de passe" name="password" id="password" class="form-control" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="remember-me" class="text-dark"><span>Se rappeler de moi</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                <input type="submit" name="submit" class="btn btn-dark btn-md" value="Se connecter">
+                            </div>
+
+                            <div id="register-link" class="text-right">
+                                <a href="{{ path('security_registration') }}" class="text-dark">S'inscrire ici</a>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

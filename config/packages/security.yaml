@@ -1,0 +1,46 @@
+security: 
+# Ici c'est les configurations plus complexes (mais simple) des directives du site (comment un visiteur doit être guidé, qui est autorisé à avoir accés à tel contenu etc...)
+    encoders: # C'est pour les mots de passe
+        App\Entity\User: # On indique le chemin de l'entité qui a besoin d'un encoder
+            algorithm: bcrypt # Quel type de hachage on veut ...
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        users_in_memory: { memory: null } # Déjà ici
+        in_database: 
+        # Créer pour pouvoir permettre Symfony de regarder dans la BDD d'elle-même afin d'estimer si oui ou non tout est "ok" pour accéder au site
+                entity: 
+                    class: App\Entity\User
+                    property: email # Permet de déterminer sur quel propriété Symfony doit se focaliser sur son analyse des données
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+
+            provider: in_database 
+            # Dans le main on créer un autre paramètre pour dire que nous avons comme moyen de connection un formulaire de login
+
+            form_login: 
+                login_path: security_login # Par où il faut aller pour se connecter
+                check_path: security_login # Par où il faut passer pour comparer les donnees à celles de la BDD
+
+            logout: 
+                path: security_logout # Comment je me déconnecte
+                target: / # Où je redirige la déconnection ( ici ça va être au login puisque nous avons ajouter des access_control)
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/connexion, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        # Ici, seule une connexion est requise pour accéder à l'accueil (la page des jeux-vidéos)
+        - { path: ^/inscription, roles: IS_AUTHENTICATED_ANONYMOUSLY } 
+        # Cela permet de contrôler l'accés d'un visiteur, ici il a le droit de pouvoir s'inscrire s'il ne peut se connecter
+        - { path: ^/, roles: ROLE_USER }
+        # Autorise l'accés au site, les personnes de ce statut...

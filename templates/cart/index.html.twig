@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% if items | length > 0 %}
+        <!-- RECAPICULATIF DU PANIER -->
+        <div class="container mt-5">
+
+            <div class="card shopping-cart">
+
+                <div class="card-header bg-dark text-light text-left shippingcart">
+                    SHOPPING CART
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Nom du produit</th>
+                            <th scope="col">Prix</th>
+                            <th scope="col">Quantité</th>
+                            <th scope="col">Prix avec TVA</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <!-- PRODUCT -->
+                        <tbody>
+                            {% for item in items %}
+                                <tr>
+                                    <th scope="row"><img class="img-responsive" src="{{ asset('images/' ~ item.article.image) }}" alt="prewiew" width="120" height="80"></th>
+                                    <td>{{ item.article.productname }}</td>
+                                    <td>{{ item.article.price * item.quantite }} €</td>
+                                    <td> 
+                                    <div class="quantity">
+                                        <a href="{{ path('cart_delete', {'id': item.article.id}) }}"><button type="button" class="btn btn-outline-primary btn-xs">
+                                            <i class="fa fa-minus-square" aria-hidden="true"></i>
+                                        </button></a>
+                                        <input type="text" value="{{ item.quantite }}" title="Qty" class="qty" size="1">
+                                        <a href="{{ path('cart_add', {'id': item.article.id}) }}"><button type="button" class="btn btn-outline-primary btn-xs">
+                                            <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                        </button></a>
+                                    </div>
+                                    </td>
+                                    <td>{{ item.article.price * item.quantite }} €</td>
+                                    <td> 
+                                    <div class="col-2 col-sm-2 col-md-2 text-right">
+                                        <a href="{{ path('cart_remove', {'id': item.article.id}) }}"><button type="button" class="btn btn-outline-danger btn-xs">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button></a>
+                                    </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            
+            <div class="card-footer">
+                
+                <div class="text-right totalshipping">
+                Prix total : <b>{{ total }} €</b><br><a href='/'><input class="btn btn-secondary mt-4" type="submit" value="Continuer mon shopping">
+                </div>
+                <!-- RAFRAICHIR LA LISTE DU PANIER -->
+                
+
+            </div>
+
+        </div>
+
+    {% else %}
+    <!-- RECAPICULATIF DU PANIER -->
+        <div class="container mt-5">
+
+            <div class="card shopping-cart">
+
+                <div class="card-header bg-dark text-light text-left shippingcart">
+                    SHOPPING CART
+                </div><br>
+                <p> Votre panier est vide !</p>
+            </div>
+        </div>
+        
+    {% endif %}
+
+{% endblock %}
